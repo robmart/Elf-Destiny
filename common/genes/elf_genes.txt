@@ -47,4 +47,32 @@
 	}
 
 
+	# Racial skin colors
+	race_gene_skin_color = {
+		inheritable = yes
+		group = body
+
+		human_skin = {
+			index = 0
+			male = {}
+			female = male
+			boy = male
+			girl = male
+		}
+
+		dark_elf_skin = {
+			index = 1
+			male = {
+				skin_hsv_shift_curve = {
+					curve = {
+						{ 0.0 	{ 0.55 0.4 0.0 } }
+						{ 1.0   { 0.57 0.4 0.0 } }
+					}
+				}
+			}
+			female = male
+			boy = male
+			girl = male
+		}
+	}
 }
