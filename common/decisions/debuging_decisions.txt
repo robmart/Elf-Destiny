@@ -36,39 +36,38 @@ elf_debug_menu = {
 }
 
 
-# ruler_check_diarchy = {
-# 	desc = "ruler_check_diarchy"
-# 	selection_tooltip = "elf_debug_menu_tooltip"
+rando = {
+	desc = "rando"
+	selection_tooltip = "elf_debug_menu_tooltip"
 	
-# 	picture = {
-# 		reference = "gfx/interface/illustrations/decisions/decision_divine_spark.dds"
-# 	}
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_divine_spark.dds"
+	}
 
-# 	decision_group_type = debug
+	decision_group_type = debug
 
-# 	is_shown = {
-# 		is_ai = no
-# 		OR = {
-# 			# has_global_variable = elf_cheats_on
-# 			debug_only = yes
-# 			has_game_rule = elf_dest_debug_menu_turned_on
-# 		}
-# 	}
+	is_shown = {
+		is_ai = no
+		OR = {
+			# has_global_variable = elf_cheats_on
+			debug_only = yes
+			has_game_rule = elf_dest_debug_menu_turned_on
+		}
+	}
 
-# 	ai_goal = no
-# 	ai_will_do = {
-# 		value = 0
-# 	}
-# 	ai_potential = {
-# 		always = no
-# 	}
-# 	ai_check_interval = 0
+	ai_goal = no
+	ai_will_do = {
+		value = 0
+	}
+	ai_potential = {
+		always = no
+	}
+	ai_check_interval = 0
 
-# 	effect = {
-
-# 		set_merchants_clothes = yes
-# 	}
-# }
+	effect = {
+		increase_wander_sickness_effect = yes
+	}
+}
 
 # ruler_check_law = {
 # 	desc = "ruler_check_law"

@@ -31,3 +31,11 @@
     visit_black_market_merchants_shop_desc:0 "The Peddler has given you his business card and with it a permanent invitation.\n\nHead on down to the market and see if you can find his elusive shop"
     visit_black_market_merchants_shop_tooltip:0 "Visit the Peddler's shop"
     visit_black_market_merchants_shop_confirm:0 "Go Shop"
+
+    the_wandering:0 "The Wandering"
+    the_wandering_desc:0 "As elves live through centuries of graceful, extended life, a deep instinct stirs within the eldest among them. The Wandering is the natural call that comes with great age—an ancient urge that draws their restless spirits away from familiar courts and ancestral groves. Some vanish into the untamed wilderness to seek solitude and forgotten wisdom among the wilds, while others seek to step through The Grand Portal and its shimmering veil to wander the boundless realms beyond.\n\nThis graceful departure serves the living world. Though elves enjoy lifespans far longer than mortals, the slow accumulation of elders can burden realms and slow the natural rhythm of succession. Through The Wandering, these long-lived elves remove themselves from the ledger of the active living. To the realm and its laws of inheritance, they are considered departed, allowing titles to pass to heirs and kingdoms to renew their vitality. Many believe the wanderers live on as guardians of hidden paths or explorers of distant stars, forever part of elven legend.\n\n"
+    the_wandering_desc.enabled:0 "#help The Wandering population control is currently: #difficulty_easy Enabled#!#!"
+    the_wandering_desc.disabled:0 "#help The Wandering population control is currently: #difficulty_hard Disabled#!#!"
+    the_wandering_confirm:0 "Configure The Wandering"
+    the_wandering_tooltip:0 "Configure The Wandering settings"
+    the_wandering_decision_effect:0 "Configure what Elves are affected by The Wandering"

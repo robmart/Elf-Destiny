@@ -76,3 +76,19 @@ restored_portal = {
 		reference = restored_portal_background
 	}
 }
+
+the_wandering = {
+	icon = {
+		# reference = "gfx/interface/icons/event_types/type_travel_stress.dds"
+		reference = "gfx/interface/icons/event_types/type_journey.dds"
+	}
+	header_background = {
+		reference = "gfx/interface/window_event/event_header_dark.dds"
+	}
+	sound = {
+		reference = @generic_event_theme_sound
+	}
+	background = {
+		reference = the_wandering_background
+	}
+}

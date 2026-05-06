@@ -211,3 +211,33 @@ human_genetic_assignment_strength_value = {
     value = 100
     subtract = elf_genetic_assignment_strength_value
 }
+
+
+bloodline_trait_score = {
+    value = 0
+
+    if = {
+        limit = { has_trait = royal_elf_valerith }
+        add = 1
+    }
+    if = {
+        limit = { has_trait = royal_elf_serelion }
+        add = 1
+    }
+    if = {
+        limit = { has_trait = royal_elf_gwynthorn }
+        add = 1
+    }
+    if = {
+        limit = { has_trait = royal_elf_daelurin }
+        add = 1
+    }
+    if = {
+        limit = { has_trait = royal_elf_thundarael }
+        add = 1
+    }
+    if = {
+        limit = { has_trait = royal_elf_lormelis }
+        add = 1
+    }
+}

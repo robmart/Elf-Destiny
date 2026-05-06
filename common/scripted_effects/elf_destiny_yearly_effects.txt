@@ -68,48 +68,105 @@
 	}
 }
 
+set_default_elf_wandering_settings_effect = {
+	if = {
+		limit = {
+			has_game_rule = the_wandering_enabled
+		}
+		set_global_variable = { name = wandering_enabled value = yes}
+	}
+	else = {
+		set_global_variable = { name = wandering_enabled value = no}
+	}
+
+	set_global_variable = { name = wandering_frequency value = flag:frequency_2 }
+	set_global_variable = { name = wandering_age value = flag:age_range_3 }
+	set_global_variable = { name = wandering_family value = flag:close_family }
+	set_global_variable = { name = wandering_rulers value = flag:rulers_not_immune }
+	set_global_variable = { name = wandering_councilors_wont_wander value = yes }
+	set_global_variable = { name = wandering_common_court_position_wont_wander value = no }
+	set_global_variable = { name = wandering_elf_rank value = flag:any_elf }
+	set_global_variable = { name = wandering_aelurans_wont_wander value = yes}
+	set_global_variable = { name = wandering_bloodline_count value = flag:bloodline_trait_1}
+}
 
 elf_wander_pop_control_effect = {
+	# debug_log = "**** WANDERING ****"
+	# debug_log_scopes = yes
 	random_list = {
-		5 = { # doesnt wander 	
+		15 = { # doesnt wander
+			modifier = { # More Rare Frequency
+				add = 10
+				global_var:wandering_frequency = flag:frequency_1
+			}
 
 		}
 		1 = { # decides to wander
-			modifier = {
-				add = 2
-				age > 60
-			}
-
-			modifier = {
-				add = 3
-				age > 70
-			}
-
-			modifier = {
-				add = 3
-				age > 80
+			modifier = { # More Common Frequency
+				add = 4
+				global_var:wandering_frequency = flag:frequency_3
 			}
 
 			if = {
 				limit = {
-					any_extended_family_member = {
-						is_ai = no
-					}
+					is_ai = no
+				}
 
-					trigger_event = {
-						id = 
+				trigger_event = elf_destiny_utility.03
+			}
+			else_if = {
+				limit = {
+					any_player = {
+						is_close_family_of = prev
+						is_liege_or_above_of = prev
 					}
 				}
+
+				save_scope_as = family_member
+
+				random_player = {
+					limit = {
+						is_close_family_of = scope:family_member
+					}
+					trigger_event = elf_destiny_utility.031
+				}
+				
 			}
-
-			depart_to_wandering = yes
-
+			else = {
+				depart_to_wandering = yes
+			}
 
 		}
 	}
 }
 
 depart_to_wandering = {
+	save_temporary_scope_as = wanderer
+
+	if = {
+		limit = {
+			any_player = {
+				dynasty = scope:wanderer.dynasty
+			}
+		}
+
+		random_player = {
+			limit = {
+				dynasty = scope:wanderer.dynasty
+			}
+
+			send_interface_message = {
+				type = character_wanders # neutral type
+				title = departed_for_wandering
+				desc = departed_for_wandering_desc
+				right_icon = scope:wanderer
+				dynasty = {
+					add_dynasty_prestige = miniscule_dynasty_prestige_gain
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = {
 			has_global_variable = grand_portal_restored
@@ -121,6 +178,43 @@ depart_to_wandering = {
 	else = {
 		death = {
 			death_reason = death_wandering
+		}
+	}
+}
+
+increase_wander_sickness_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_character_modifier = wander_sick_1
+				has_character_modifier = wander_sick_2
+				has_character_modifier = wander_sick_3
+			}
+		}
+		add_character_modifier = wander_sick_1
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = wander_sick_1
+		}
+		remove_character_modifier = wander_sick_1
+		add_character_modifier = wander_sick_2
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = wander_sick_2
+		}
+		remove_character_modifier = wander_sick_2
+		add_character_modifier = wander_sick_3
+	}
+	else_if = {
+		limit = {
+			has_character_modifier = wander_sick_3
+		}
+		save_scope_as = wander_resister
+		custom_tooltip = {
+			text = wander_sickness_inner_struggle
+			trigger_event = elf_destiny_utility.032 
 		}
 	}
 }

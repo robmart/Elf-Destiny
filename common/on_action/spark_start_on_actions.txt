@@ -867,5 +867,7 @@ set_character_creation_ended = {
             name = character_creation_ended
             value = yes
         }
+
+        set_default_elf_wandering_settings_effect = yes
 	}
 }

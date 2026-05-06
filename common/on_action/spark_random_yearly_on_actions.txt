@@ -281,12 +281,225 @@ set_ai_ruler_aeluran_authority_law_level = {
 
 elf_wander_pop_control_pulse = {
 	trigger = {
-		is_ruler = no
-		is_councillor = no
-		has_any_court_position = no
+		global_var:wandering_enabled = yes
+		NOT = { has_character_flag = resisted_wandering }
+		NOT = { has_character_modifier = wander_immune }
+		
+		save_temporary_scope_as = wandering_candidate
+
 		is_any_elf_type = yes
-		age > 40
-		is_ai =  yes
+		# is_ai =  yes
+
+		trigger_if = {
+			limit = {
+				has_global_variable = wandering_age
+				global_var:wandering_age = flag:age_range_1
+			}
+			is_adult = yes
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_age
+				global_var:wandering_age = flag:age_range_2
+			}
+			age > 50
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_age
+				global_var:wandering_age = flag:age_range_3
+			}
+			age > 75
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_age
+				global_var:wandering_age = flag:age_range_4
+			}
+			age > 100
+		}
+
+		## FAMILY OF PLAYER ##
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_family
+				global_var:wandering_family = flag:no_family
+			}
+			# No Family Excluded
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_family
+				global_var:wandering_family = flag:close_family
+			}
+			NOT = {
+				any_player = {
+					is_close_family_of = prev
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_family
+				global_var:wandering_family = flag:extended_family
+			}
+			NOT = {
+				any_player = {
+					is_extended_family_of = prev
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				has_global_variable = wandering_family
+				global_var:wandering_family = flag:dynasty
+			}
+			NOT = {
+				any_player = {
+					dynasty = prev.dynasty
+				}
+			}
+		}
+
+		## RULER ##
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_rulers
+				global_var:wandering_rulers = flag:rulers_and_heirs
+			}
+			NOT = { is_ruler = yes }
+			NOT = {
+				any_ruler = {
+					scope:wandering_candidate = {
+						is_primary_heir_of = prev
+					}
+				}
+			}
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_rulers
+				global_var:wandering_rulers = flag:rulers
+			}
+			NOT = { is_ruler = yes }
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_rulers
+				global_var:wandering_rulers = flag:rulers_not_immune
+			}
+			# Rulers can wander
+		}
+
+		## Councillor
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_councilors_wont_wander
+				global_var:wandering_councilors_wont_wander = yes
+			}
+			is_councillor = no
+		}
+		## Court Position
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_common_court_position_wont_wander
+				global_var:wandering_common_court_position_wont_wander = yes
+			}
+			has_any_court_position = no
+		}
+
+		## Elf Type
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:tier_1_and_below
+			}
+			is_elf_blood = yes
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:tier_2_and_below
+			}
+			OR = {
+				is_elf_blood = yes
+				is_elf = yes
+			}
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:tier_3_and_below
+			}
+			is_low_elf_tier = yes
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:fae_tier_and_below
+			}
+			OR = {
+				is_low_elf_tier = yes
+				is_fae_elf_tier = yes
+			}
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:celestial_tier_and_below
+			}
+			OR = {
+				is_low_elf_tier = yes
+				is_fae_elf_tier = yes
+				is_celestial_elf_tier = yes
+			}
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_elf_rank
+				global_var:wandering_elf_rank = flag:ainur_tier_and_below
+			}
+			# Any elf types will work
+		}
+
+		## Aelurans
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_aelurans_wont_wander
+				global_var:wandering_aelurans_wont_wander = yes
+			}
+			is_aeluran_sister_or_higher = no
+		}
+
+		## Bloodline
+		trigger_if = { 
+			limit = {
+				has_global_variable = wandering_bloodline_count
+				global_var:wandering_bloodline_count = flag:bloodline_trait_0
+			}
+			# All Bloodline Trait characters will Wander
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_bloodline_count
+				global_var:wandering_bloodline_count = flag:bloodline_trait_1
+			}
+			bloodline_trait_score >= 1
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_bloodline_count
+				global_var:wandering_bloodline_count = flag:bloodline_trait_2
+			}
+			bloodline_trait_score >= 2
+		}
+		trigger_else_if = { 
+			limit = {
+				has_global_variable = wandering_bloodline_count
+				global_var:wandering_bloodline_count = flag:bloodline_trait_3
+			}
+			bloodline_trait_score >= 3
+		}
 	}
 
 	effect = {

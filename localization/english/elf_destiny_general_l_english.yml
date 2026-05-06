@@ -11,3 +11,9 @@
   UNDER_CONSTRUCTION:0 "\"This feature is under construction. Try again later\" - The Architect"
 
   number_to_string: "[SCOPE.GetValue('number')|0]"
+
+  rule_the_wandering_pop_control:0 "Elven Population Control - The Wandering"
+  setting_the_wandering_enabled:0 "#difficulty_easy Enabled#!"
+  setting_the_wandering_enabled_desc:0 "To help game performance Elves of certain criteria and age will leave the realm to wander the wilderness or travel through the Grand Portal"
+  setting_the_wandering_disabled:0 "#difficulty_hard Disabled#!"
+  setting_the_wandering_disabled_desc:0 "Elven population control is turned off"

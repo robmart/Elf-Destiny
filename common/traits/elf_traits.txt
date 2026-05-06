@@ -11,5 +11,7 @@ elven_immortality = {
 	group = elf_mortality
 	level = 2
 
+	flag = is_immortal
+
 	shown_in_ruler_designer = no
 }

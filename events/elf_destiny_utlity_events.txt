@@ -1,0 +1,1610 @@
+﻿namespace = elf_destiny_utility
+
+elf_destiny_utility.01 = { # re-enable toast notifications
+	hidden = yes
+
+	immediate = {
+		remove_global_variable = disable_toast_notifications
+	}
+}
+
+scripted_effect toggle_wandering_setting = {
+	if = {
+		limit = {global_var:$WANDERING_SETTING$ = yes}
+		set_global_variable = {
+			name = $WANDERING_SETTING$ 
+			value = no
+		}
+	}
+	else = {
+		set_global_variable = {
+			name = $WANDERING_SETTING$ 
+			value = yes
+		}
+	}
+}
+
+elf_destiny_utility.02 = { # configure the wandering
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { global_var:wandering_enabled = yes }
+				desc = elf_destiny_utility.02.title.enabled
+			}
+			desc = elf_destiny_utility.02.title.disabled
+		}
+	}
+	desc = {
+		desc = elf_destiny_utility.02.desc
+		first_valid = { # Frequency
+			triggered_desc = {
+				trigger = { global_var:wandering_frequency = flag:frequency_1 }
+				desc = elf_destiny_utility.02.frequency_1
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_frequency = flag:frequency_2 }
+				desc = elf_destiny_utility.02.frequency_2
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_frequency = flag:frequency_3 }
+				desc = elf_destiny_utility.02.frequency_3
+			}
+		}
+
+		first_valid = { # Age
+			triggered_desc = {
+				trigger = { global_var:wandering_age = flag:age_range_1 }
+				desc = elf_destiny_utility.02.age_range_1
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_age = flag:age_range_2 }
+				desc = elf_destiny_utility.02.age_range_2
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_age = flag:age_range_3 }
+				desc = elf_destiny_utility.02.age_range_3
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_age = flag:age_range_4 }
+				desc = elf_destiny_utility.02.age_range_4
+			}
+		}
+
+		first_valid = { # Family
+			triggered_desc = {
+				trigger = { global_var:wandering_family = flag:no_family }
+				desc = elf_destiny_utility.02.no_family
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_family = flag:close_family }
+				desc = elf_destiny_utility.02.close_family
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_family = flag:extended_family }
+				desc = elf_destiny_utility.02.extended_family
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_family = flag:dynasty }
+				desc = elf_destiny_utility.02.dynasty
+			}
+		}
+
+		first_valid = { # Rulers
+			triggered_desc = {
+				trigger = { global_var:wandering_rulers = flag:rulers_and_heirs }
+				desc = elf_destiny_utility.02.rulers_and_heirs
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_rulers = flag:rulers }
+				desc = elf_destiny_utility.02.rulers
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_rulers = flag:rulers_not_immune }
+				desc = elf_destiny_utility.02.rulers_not_immune
+			}
+		}
+
+		first_valid = { # Positions - Councilors
+			triggered_desc = {
+				trigger = { global_var:wandering_councilors_wont_wander = yes }
+				desc = elf_destiny_utility.02.councilors_disabled
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_councilors_wont_wander = no }
+				desc = elf_destiny_utility.02.councilors_enabled
+			}
+		}
+
+		first_valid = { # Positions - Common Court Positions
+			triggered_desc = {
+				trigger = { global_var:wandering_common_court_position_wont_wander = yes }
+				desc = elf_destiny_utility.02.court_position_disabled
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_common_court_position_wont_wander = no }
+				desc = elf_destiny_utility.02.court_position_enabled
+			}
+		}
+
+		first_valid = { # Elf Level
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:any_elf }
+				desc = elf_destiny_utility.02.any_elf
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:tier_1_and_below }
+				desc = elf_destiny_utility.02.tier_1_and_below
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:tier_2_and_below }
+				desc = elf_destiny_utility.02.tier_2_and_below
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:tier_3_and_below }
+				desc = elf_destiny_utility.02.tier_3_and_below
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:fae_tier_and_below }
+				desc = elf_destiny_utility.02.fae_tier_and_below
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:celestial_tier_and_below }
+				desc = elf_destiny_utility.02.celestial_tier_and_below
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_elf_rank = flag:ainur_tier_and_below }
+				desc = elf_destiny_utility.02.ainur_tier_and_below
+			}
+		}
+
+		first_valid = { # Aelurans
+			triggered_desc = {
+				trigger = { global_var:wandering_aelurans_wont_wander = no }
+				desc = elf_destiny_utility.02.aelurans_enabled
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_aelurans_wont_wander = yes }
+				desc = elf_destiny_utility.02.aelurans_disabled
+			}
+		}
+		first_valid = { # Bloodline Characters
+			triggered_desc = {
+				trigger = { global_var:wandering_bloodline_count = flag:bloodline_trait_0 }
+				desc = elf_destiny_utility.02.bloodline_trait_0
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_bloodline_count = flag:bloodline_trait_1 }
+				desc = elf_destiny_utility.02.bloodline_trait_1
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_bloodline_count = flag:bloodline_trait_2 }
+				desc = elf_destiny_utility.02.bloodline_trait_2
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_bloodline_count = flag:bloodline_trait_3 }
+				desc = elf_destiny_utility.02.bloodline_trait_3
+			}
+		}
+	}
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = { # Enable/Disable Wandering
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_enabled = yes
+						}
+						desc = elf_destiny_utility.02.enable_toggle_on
+					}
+					desc = elf_destiny_utility.02.enable_toggle_off
+				}
+			}
+		}
+
+		toggle_wandering_setting = { WANDERING_SETTING = wandering_enabled }
+		trigger_event = elf_destiny_utility.02
+	}
+
+	option = { # Configure Settings
+		name = elf_destiny_utility.02.configure
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = { # Leave
+		name = elf_destiny_utility.02.leave
+	}
+}
+
+elf_destiny_utility.021 = { # configure the wandering
+	type = character_event
+	title = elf_destiny_utility.021.title
+	desc = elf_destiny_utility.021.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.02
+	}
+
+	option = {
+		name = elf_destiny_utility.021.frequency
+		trigger_event = elf_destiny_utility.0211
+	}
+
+	option = {
+		name = elf_destiny_utility.021.age
+		trigger_event = elf_destiny_utility.0212
+	}
+
+	option = {
+		name = elf_destiny_utility.021.player_family_proximity
+		trigger_event = elf_destiny_utility.0213
+	}
+
+	option = {
+		name = elf_destiny_utility.021.rulers
+		trigger_event = elf_destiny_utility.0214
+	}
+
+	option = {
+		name = elf_destiny_utility.021.court_positions
+		trigger_event = elf_destiny_utility.0215
+	}
+
+	option = {
+		name = elf_destiny_utility.021.elf_level
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = elf_destiny_utility.021.traits
+		trigger_event = elf_destiny_utility.0217
+	}
+}
+
+elf_destiny_utility.0211 = { # configure frequency
+	type = character_event
+	title = elf_destiny_utility.0211.title
+	desc = elf_destiny_utility.0211.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_frequency = flag:frequency_1
+						}
+						desc = elf_destiny_utility.0211.frequency_1_selected
+					}
+					desc = elf_destiny_utility.0211.frequency_1
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_frequency
+			value = flag:frequency_1
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_frequency = flag:frequency_1}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_frequency
+			global_var:wandering_frequency = flag:frequency_1
+		}
+
+		trigger_event = elf_destiny_utility.0211
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_frequency = flag:frequency_2
+						}
+						desc = elf_destiny_utility.0211.frequency_2_selected
+					}
+					desc = elf_destiny_utility.0211.frequency_2
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_frequency
+			value = flag:frequency_2
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_frequency = flag:frequency_2}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_frequency
+			global_var:wandering_frequency = flag:frequency_2
+		}
+
+		trigger_event = elf_destiny_utility.0211
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_frequency = flag:frequency_3
+						}
+						desc = elf_destiny_utility.0211.frequency_3_selected
+					}
+					desc = elf_destiny_utility.0211.frequency_3
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_frequency
+			value = flag:frequency_3
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_frequency = flag:frequency_3}
+		}
+
+		show_as_unavailable = {
+			global_var:wandering_frequency = flag:frequency_3
+		}
+
+		trigger_event = elf_destiny_utility.0211
+	}
+}
+
+elf_destiny_utility.0212 = { # configure age
+	type = character_event
+	title = elf_destiny_utility.0212.title
+	desc = elf_destiny_utility.0212.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_age = flag:age_range_1
+						}
+						desc = elf_destiny_utility.0212.age_range_1_selected
+					}
+					desc = elf_destiny_utility.0212.age_range_1
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_age
+			value = flag:age_range_1
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_age = flag:age_range_1}
+		}
+		show_as_unavailable = {
+			global_var:wandering_age = flag:age_range_1
+		}
+
+		trigger_event = elf_destiny_utility.0212
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_age = flag:age_range_2
+						}
+						desc = elf_destiny_utility.0212.age_range_2_selected
+					}
+					desc = elf_destiny_utility.0212.age_range_2
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_age
+			value = flag:age_range_2
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_age = flag:age_range_2}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_age
+			global_var:wandering_age = flag:age_range_2
+		}
+
+		trigger_event = elf_destiny_utility.0212
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_age = flag:age_range_3
+						}
+						desc = elf_destiny_utility.0212.age_range_3_selected
+					}
+					desc = elf_destiny_utility.0212.age_range_3
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_age
+			value = flag:age_range_3
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_age = flag:age_range_3}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_age
+			global_var:wandering_age = flag:age_range_3
+		}
+
+		trigger_event = elf_destiny_utility.0212
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_age = flag:age_range_4
+						}
+						desc = elf_destiny_utility.0212.age_range_4_selected
+					}
+					desc = elf_destiny_utility.0212.age_range_4
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_age
+			value = flag:age_range_4
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_age = flag:age_range_4}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_age
+			global_var:wandering_age = flag:age_range_4
+		}
+
+		trigger_event = elf_destiny_utility.0212
+	}
+}
+
+elf_destiny_utility.0213 = { # configure family proximity
+	type = character_event
+	title = elf_destiny_utility.0213.title
+	desc = elf_destiny_utility.0213.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_family = flag:no_family
+						}
+						desc = elf_destiny_utility.0213.no_family_selected
+					}
+					desc = elf_destiny_utility.0213.no_family
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_family
+			value = flag:no_family
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_family = flag:no_family}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_family
+			global_var:wandering_family = flag:no_family
+		}
+
+		trigger_event = elf_destiny_utility.0213
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_family = flag:close_family
+						}
+						desc = elf_destiny_utility.0213.close_family_selected
+					}
+					desc = elf_destiny_utility.0213.close_family
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_family
+			value = flag:close_family
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_family = flag:close_family}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_family
+			global_var:wandering_family = flag:close_family
+		}
+
+		trigger_event = elf_destiny_utility.0213
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_family = flag:extended_family
+						}
+						desc = elf_destiny_utility.0213.extended_family_selected
+					}
+					desc = elf_destiny_utility.0213.extended_family
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_family
+			value = flag:extended_family
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_family = flag:extended_family}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_family
+			global_var:wandering_family = flag:extended_family
+		}
+
+		trigger_event = elf_destiny_utility.0213
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_family = flag:dynasty
+						}
+						desc = elf_destiny_utility.0213.dynasty_selected
+					}
+					desc = elf_destiny_utility.0213.dynasty
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_family
+			value = flag:dynasty
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_family = flag:dynasty}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_family
+			global_var:wandering_family = flag:dynasty
+		}
+
+		trigger_event = elf_destiny_utility.0213
+	}
+}
+
+elf_destiny_utility.0214 = { # configure ruler status
+	type = character_event
+	title = elf_destiny_utility.0214.title
+	desc = elf_destiny_utility.0214.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_rulers = flag:rulers_and_heirs
+						}
+						desc = elf_destiny_utility.0214.rulers_and_heirs_selected
+					}
+					desc = elf_destiny_utility.0214.rulers_and_heirs
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_rulers
+			value = flag:rulers_and_heirs
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_rulers = flag:rulers_and_heirs}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_rulers
+			global_var:wandering_rulers = flag:rulers_and_heirs
+		}
+
+		trigger_event = elf_destiny_utility.0214
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_rulers = flag:rulers
+						}
+						desc = elf_destiny_utility.0214.rulers_selected
+					}
+					desc = elf_destiny_utility.0214.rulers
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_rulers
+			value = flag:rulers
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_rulers = flag:rulers}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_rulers
+			global_var:wandering_rulers = flag:rulers
+		}
+
+		trigger_event = elf_destiny_utility.0214
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_rulers = flag:rulers_not_immune
+						}
+						desc = elf_destiny_utility.0214.rulers_not_immune_selected
+					}
+					desc = elf_destiny_utility.0214.rulers_not_immune
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_rulers
+			value = flag:rulers_not_immune
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_rulers = flag:rulers_not_immune}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_rulers
+			global_var:wandering_rulers = flag:rulers_not_immune
+		}
+
+		trigger_event = elf_destiny_utility.0214
+	}
+}
+
+elf_destiny_utility.0215 = { # configure court positions
+	type = character_event
+	title = elf_destiny_utility.0215.title
+	desc = elf_destiny_utility.0215.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_councilors_wont_wander = yes
+						}
+						desc = elf_destiny_utility.0215.councilors_disabled
+					}
+					desc = elf_destiny_utility.0215.councilors_enabled
+				}
+			}
+		}
+
+		toggle_wandering_setting = { WANDERING_SETTING = wandering_councilors_wont_wander }
+
+		trigger_event = elf_destiny_utility.0215
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_common_court_position_wont_wander = yes
+						}
+						desc = elf_destiny_utility.0215.court_position_disabled
+					}
+					desc = elf_destiny_utility.0215.court_position_enabled
+				}
+			}
+		}
+
+		toggle_wandering_setting = { WANDERING_SETTING = wandering_common_court_position_wont_wander }
+
+		trigger_event = elf_destiny_utility.0215
+	}
+}
+
+elf_destiny_utility.0216 = { # configure elf level
+	type = character_event
+	title = elf_destiny_utility.0216.title
+	desc = elf_destiny_utility.0216.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:any_elf
+						}
+						desc = elf_destiny_utility.0216.any_elf_selected
+					}
+					desc = elf_destiny_utility.0216.any_elf
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:any_elf
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:any_elf}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:any_elf
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:tier_1_and_below
+						}
+						desc = elf_destiny_utility.0216.tier_1_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.tier_1_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:tier_1_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:tier_1_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:tier_1_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:tier_2_and_below
+						}
+						desc = elf_destiny_utility.0216.tier_2_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.tier_2_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:tier_2_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:tier_2_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:tier_2_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:tier_3_and_below
+						}
+						desc = elf_destiny_utility.0216.tier_3_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.tier_3_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:tier_3_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:tier_3_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:tier_3_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:fae_tier_and_below
+						}
+						desc = elf_destiny_utility.0216.fae_tier_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.fae_tier_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:fae_tier_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:fae_tier_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:fae_tier_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:celestial_tier_and_below
+						}
+						desc = elf_destiny_utility.0216.celestial_tier_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.celestial_tier_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:celestial_tier_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:celestial_tier_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:celestial_tier_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_elf_rank = flag:ainur_tier_and_below
+						}
+						desc = elf_destiny_utility.0216.ainur_tier_and_below_selected
+					}
+					desc = elf_destiny_utility.0216.ainur_tier_and_below
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_elf_rank
+			value = flag:ainur_tier_and_below
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_elf_rank = flag:ainur_tier_and_below}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_elf_rank
+			global_var:wandering_elf_rank = flag:ainur_tier_and_below
+		}
+
+		trigger_event = elf_destiny_utility.0216
+	}
+
+
+}
+
+elf_destiny_utility.0217 = { # configure traits
+	type = character_event
+	title = elf_destiny_utility.0217.title
+	desc = elf_destiny_utility.0217.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	# left_portrait = {
+	# 	character = root
+	# 	animation = stunned
+	# }
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.02.back_arrow
+		trigger_event = elf_destiny_utility.021
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_aelurans_wont_wander = yes
+						}
+						desc = elf_destiny_utility.0217.aelurans_disabled
+					}
+					desc = elf_destiny_utility.0217.aelurans_enabled
+				}
+			}
+		}
+
+		toggle_wandering_setting = { WANDERING_SETTING = wandering_aelurans_wont_wander }
+
+		trigger_event = elf_destiny_utility.0217
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_bloodline_count = flag:bloodline_trait_0
+						}
+						desc = elf_destiny_utility.0217.bloodline_trait_0_selected
+					}
+					desc = elf_destiny_utility.0217.bloodline_trait_0
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_bloodline_count
+			value = flag:bloodline_trait_0
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_bloodline_count = flag:bloodline_trait_0}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_bloodline_count
+			global_var:wandering_bloodline_count = flag:bloodline_trait_0
+		}
+
+		trigger_event = elf_destiny_utility.0217
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_bloodline_count = flag:bloodline_trait_1
+						}
+						desc = elf_destiny_utility.0217.bloodline_trait_1_selected
+					}
+					desc = elf_destiny_utility.0217.bloodline_trait_1
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_bloodline_count
+			value = flag:bloodline_trait_1
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_bloodline_count = flag:bloodline_trait_1}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_bloodline_count
+			global_var:wandering_bloodline_count = flag:bloodline_trait_1
+		}
+
+		trigger_event = elf_destiny_utility.0217
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_bloodline_count = flag:bloodline_trait_2
+						}
+						desc = elf_destiny_utility.0217.bloodline_trait_2_selected
+					}
+					desc = elf_destiny_utility.0217.bloodline_trait_2
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_bloodline_count
+			value = flag:bloodline_trait_2
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_bloodline_count = flag:bloodline_trait_2}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_bloodline_count
+			global_var:wandering_bloodline_count = flag:bloodline_trait_2
+		}
+
+		trigger_event = elf_destiny_utility.0217
+	}
+
+	option = {
+		name = {
+			text = {
+				first_valid = {
+					triggered_desc = { 
+						trigger = { 
+							global_var:wandering_bloodline_count = flag:bloodline_trait_3
+						}
+						desc = elf_destiny_utility.0217.bloodline_trait_3_selected
+					}
+					desc = elf_destiny_utility.0217.bloodline_trait_3
+				}
+			}
+		}
+
+		set_global_variable = {
+			name = wandering_bloodline_count
+			value = flag:bloodline_trait_3
+		}
+
+		trigger = {
+			NOT = {global_var:wandering_bloodline_count = flag:bloodline_trait_3}
+		}
+		show_as_unavailable = {
+			exists = global_var:wandering_bloodline_count
+			global_var:wandering_bloodline_count = flag:bloodline_trait_3
+		}
+
+		trigger_event = elf_destiny_utility.0217
+	}
+
+}
+
+
+elf_destiny_utility.03 = { # Player Character Wishes to Wander
+	type = character_event
+	title = elf_destiny_utility.03.title
+	desc = elf_destiny_utility.03.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = wilderness_forest_pine }
+
+	right_portrait = {
+		character = root
+		animation = personality_bold
+		camera = face_away_right_portrait
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.03.go
+		trigger_event = elf_destiny_utility.0301
+	}
+
+	option = {
+		name = elf_destiny_utility.03.stay
+		increase_wander_sickness_effect = yes
+		add_character_flag = {
+			flag = resisted_wandering
+			years = 10
+		}
+	}
+}
+
+elf_destiny_utility.0301 = { # Player Character Decides to wander
+	type = character_event
+	title = elf_destiny_utility.0301.title
+	desc = elf_destiny_utility.0301.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = throne_room }
+
+	left_portrait = {
+		character = root
+		animation = holding_staff
+	}
+
+	right_portrait = {
+		character = scope:portrait_2
+		animation = shame
+	}
+
+	immediate = {
+		player_heir = {
+			save_scope_as = portrait_2
+		}
+	}
+
+	option = {
+		name = elf_destiny_utility.0301.a
+
+		depart_to_wandering = yes
+	}
+}
+
+elf_destiny_utility.031 = { # Close Family Decides to Wander
+	type = character_event
+	title = elf_destiny_utility.031.title
+	desc = elf_destiny_utility.031.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = wilderness_forest_pine }
+
+	left_portrait = {
+		character = scope:family_member
+		animation = cowardly
+		camera = face_away_right_portrait
+	}
+
+	right_portrait = {
+		character = root
+		animation = sadness
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.031.a
+		
+		duel = {
+			skill = diplomacy
+			target = scope:family_member
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				opinion_modifier = {
+					who = scope:family_member
+					opinion_target = root
+					multiplier = 0.5
+				}
+				desc = elf_destiny_utility.031.a.success
+
+				custom_tooltip = {
+					text = elf_destiny_utility.031.a.success_tooltip
+				}
+
+				trigger_event = elf_destiny_utility.0311
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = elf_destiny_utility.031.a.failure
+
+				custom_tooltip = {
+					text = elf_destiny_utility.031.a.failure_tooltip
+				}
+
+				trigger_event = elf_destiny_utility.0312
+			}
+		}
+	}
+
+	option = {
+		name = elf_destiny_utility.031.b
+
+		scope:family_member = {
+			depart_to_wandering = yes
+		}
+	}
+}
+
+elf_destiny_utility.0311 = { # Close Family agrees to stay
+	type = character_event
+	title = elf_destiny_utility.0311.title
+	desc = elf_destiny_utility.0311.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = wilderness_forest_pine }
+
+	left_portrait = {
+		character = scope:family_member
+		animation = personality_compassionate
+	}
+
+	right_portrait = {
+		character = root
+		animation = love
+	}
+
+
+	immediate = {
+		scope:family_member = {
+			increase_wander_sickness_effect = yes
+			add_character_flag = {
+				flag = resisted_wandering
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = elf_destiny_utility.0311.a
+		# trigger_event = elf_destiny_utility.021
+	}
+}
+
+elf_destiny_utility.0312 = { # Close Family decides to leave
+	type = character_event
+	title = elf_destiny_utility.0312.title
+	desc = elf_destiny_utility.0312.desc
+	
+	theme = the_wandering
+	override_background = { reference = wilderness_forest_pine }
+
+	left_portrait = {
+		character = scope:family_member
+		animation = personality_compassionate
+	}
+
+	right_portrait = {
+		character = root
+		animation = sadness
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.0312.a
+		scope:family_member = {
+			depart_to_wandering = yes
+		}
+	}
+}
+
+
+elf_destiny_utility.032 = { # Wander Sickness Internal Battle
+	type = character_event
+	title = elf_destiny_utility.032.title
+	desc = elf_destiny_utility.032.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+
+	override_background = { reference = throne_room }
+
+	left_portrait = {
+		character = root
+		animation = delirium
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.032.a
+		duel = {
+			skill = learning
+			value = high_skill_rating
+			20 = { # Success
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2.5
+					min = -49
+				}
+
+				desc = elf_destiny_utility.032.a.success
+				custom_tooltip = {
+					text = elf_destiny_utility.032.a.success_tooltip
+				}
+
+				trigger_event = elf_destiny_utility.0321
+			}
+			30 = { # Fail
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+
+				desc = elf_destiny_utility.032.a.failure
+				# custom_tooltip = {
+				# 	text = elf_destiny_utility.032.a.failure_tooltip
+				# }
+
+				stress_impact = {
+					base = massive_stress_gain
+				}
+				trigger_event = elf_destiny_utility.0322
+			}
+		}
+	}
+}
+
+elf_destiny_utility.0321 = { # You transcend the cycle
+	type = character_event
+	title = elf_destiny_utility.0321.title
+	desc = elf_destiny_utility.0321.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = throne_room }
+
+	left_portrait = {
+		character = root
+		animation = frontend_right_idle
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.0321.a
+		# trigger_event = elf_destiny_utility.021
+		if = {
+			limit = {
+				has_character_modifier = wander_sick_3
+			}
+			remove_character_modifier = wander_sick_3
+		}
+
+		add_character_modifier = wander_immune
+	}
+}
+
+elf_destiny_utility.0322 = { # The call overwhelms you
+	type = character_event
+	title = elf_destiny_utility.0322.title
+	desc = elf_destiny_utility.0322.desc
+	
+	theme = the_wandering
+	content_source = elf_destiny
+	override_background = { reference = throne_room }
+
+	left_portrait = {
+		character = root
+		animation = throne_room_kneel_1
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = elf_destiny_utility.0322.a
+		# trigger_event = elf_destiny_utility.021
+	}
+}
