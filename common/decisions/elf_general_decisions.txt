@@ -250,3 +250,64 @@ visit_black_market_merchants_shop = {
 
 	}
 }
+
+the_wandering = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_wandering_1.dds"
+	}
+	decision_group_type = elf
+
+	desc = {
+		desc = the_wandering_desc
+		first_valid = { # Frequency
+			triggered_desc = {
+				trigger = { global_var:wandering_enabled = yes }
+				desc = the_wandering_desc.enabled
+			}
+			triggered_desc = {
+				trigger = { global_var:wandering_enabled = no }
+				desc = the_wandering_desc.disabled
+			}
+		}
+	}
+
+	selection_tooltip = the_wandering_tooltip
+	ai_goal = no
+
+	sort_order = 499
+
+	is_shown = {
+	}
+
+	# Following conditions must be true to take decision, shown in requirements section
+	is_valid = {
+	}
+
+	# Following conditions Will be shown as a validation error tooltip when False
+	is_valid_showing_failures_only = {
+
+	}
+
+	cost = {
+
+	}
+
+	# cooldown = { 
+	# 	years = 1
+	# }
+
+	effect = {
+		custom_tooltip = {
+			text = the_wandering_decision_effect
+			trigger_event = elf_destiny_utility.02
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+
+	}
+}

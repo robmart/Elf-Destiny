@@ -13,20 +13,19 @@ aeluran_weavers_government = {
 		landless_playable = yes
 		rulers_should_have_dynasty = yes
 		council = yes
-		royal_court = yes
 		court_generate_spouses = yes # Should spouses be generated in courts of this government? yes by default
 		court_generate_commanders = no	# Should commanders be generated in courts of this government? Can use a multiplier to the default number. yes = 1, no = 0
 		allow_accolades = yes
 		affected_by_development = yes
 	}
 
+	royal_court = any
+
 	primary_holding = church_holding
 	valid_holdings = { tribal_holding city_holding castle_holding }
 	required_county_holdings = { }
 
 	preferred_religions = { spark_religion }
-
-
 
 	ai = {
 		use_lifestyle = yes

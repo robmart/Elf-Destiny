@@ -257,6 +257,10 @@ aeluran_respect_from_genetics = {
 			limit = { has_trait = royal_elf_thundarael }
 			add = has_bloodline_respect_bonus
 		}
+		if = {
+			limit = { has_trait = royal_elf_lormelis }
+			add = has_bloodline_respect_bonus
+		}
 
 		if = {
 			limit = { has_trait = beauty_good_1 }

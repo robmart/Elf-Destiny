@@ -13,12 +13,13 @@
 	government_rules = {
 		rulers_should_have_dynasty = yes
 		# landless_playable = yes DONT EVER USE THIS FOR ANYTHING OTHER THAN LANDLESS YOU FOOL
-		royal_court = yes
 		legitimacy = yes
 		create_cadet_branches = yes
 		regiments_prestige_as_gold = yes
 		allow_accolades = yes
 	}
+
+	royal_court = any
 
 	ai = {
 		use_legends = yes

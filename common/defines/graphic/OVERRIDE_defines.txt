@@ -1,0 +1,62 @@
+﻿NGui = {
+	# Tooltip open time is a setting now.
+	TOOLTIP_OPEN_DELAYED_TIME = 0.0		# Time a delayed tooltip takes to show up
+	TOOLTIP_CLOSE_TIME = 0.2			# Time a delayed tooltip takes to close
+	TOOLTIP_TENDENCY_BUFFER = 15		# Tendency buffer to detect where the mouse if going to be in the future
+	TOOLTIP_MIDDLE_MOUSE_LOCK_TIME = 0.25 # How quickly you need to click/release the middle mouse button to lock a tooltip in seconds
+	# Tooltip stack tint RGBA colors starting with the top tooltip
+	TOOLTIP_TINT_RGBA = {
+		1.0  1.0  1.0	1.0
+		0.8 0.8 0.8 1.0
+		0.6 0.6 0.6  1.0
+		0.1  0.1  0.1	0.2
+	}
+	MESSAGE_HISTORY_LOG_MAX_MESSAGES = 75 # Number of max messages in the list until it starts clearing oldest
+	MESSAGE_FEED_DELAY = 1 # Number of seconds between the feed systems wait before adding another message if there's a queue
+	MESSAGE_FEED_DAYS_SHOWN = 120 # Number of days a items will be shown in the feed before disappearing.
+	MESSAGE_FEED_CONSOLIDATION_DAYS = 15 # Number of days between messages we allow consolidation for
+	TOAST_MESSAGE_TIME_SHOWN = 11 # Duration in seconds for how long to show a toast. Use < 0 to require manual dismissal.
+	TOAST_MESSAGE_POST_HOVER_DELAY = 1.0 # When a message is hovered it doesn't disappear, but the above timeout still runs. When leaving with the mouse and the time has run out, leave the message on the screen for TOAST_MESSAGE_POST_HOVER_DELAY seconds.
+	EVENT_WINDOW_EDGE_PIXELS = 200	# If an event window is moved outside the game window this number of pixels will stay inside it
+	EVENT_PORTRAIT_DEFAULT_ENVIRONMENT = "environment_event_standard" # Default portrait environment for animated event portraits
+    # ELF DESTINY OVERRIDE (4 => 25) because its an annoying as F limitation
+	EVENT_OPTIONS_SHOWN_HIDE_UNAVAILABLE = 25 # How many options can be shown before unavailable options are not shown anymore (can lead to none/only some unavailable options being shown according to their order in the event)
+	SCHEME_PREPARATION_OPTIONS_SHOWN_HIDE_UNAVAILABLE = 8 # How many options can be shown for *scheme preparations* before unavailable options are not shown anymore
+	EVENT_OPTIONS_DISABLED_TIME = 0.5 # How long are event options unclickable after an event spawns, to prevent accidental clicks?
+	MORE_INTERACTIONS_MOVED_TO_COMMON = 2 # If the common interactions are empty how many non common ones are moved to be shown as common. If there is going to be only one left in the more section it will be moved too.
+	DAYS_SINCE_LAST_RAID_SHOULD_DISBAND = 60	# If this long since last raided, prompt player to disband their troops if they're not at war
+
+	# Tint for opinion box, from bad to neutral to good. Neutral has two values,
+	OPINION_TINT_RGBA = {
+		0.83 	0.17 	0.17 	1.0 	# -100 Opinion
+		0.76 	0.53 	0.17 	1.0 	# -0.1 Opinion
+		0.58 	0.69 	0.28 	1.0 	# +0.1 Opinion
+		0.29  	0.88  	0.31		1.0		# +100 Opinion
+	}
+
+	DISABLE_SHORTCUT_ACCESS_FOR_WINDOW_NAMES = {
+		"character_window"
+		"my_realm_window"
+		"military_window"
+		"council_window"
+		"court_window"
+		"intrigue_window"
+		"factions_window"
+		"decision_window"
+		"activity_list_window"
+		"encyclopedia"
+	}
+
+	FIND_TITLES_MAX_MATCHES = 20	# The maximum number of titles that show up in the list while doing find titles
+	MAX_MS_FOR_FIND_TITLE_LOOKUP = 10	# How much time should we spend ecah frame on updating the title lookup for Find Title after opening it
+
+	MAX_PRISONER_COUNT_GRID = 4 	# The maximum amount of prisoners to display in the grid view (before switching over to the list view, when this grows beyond what is set here)
+	MAX_WAR_PARTICIPANTS_IN_TOOLTIP = 6 # If a war side has more than this number of people, we cap the list and say "and x more"
+
+	DECISION_DETAILS_VIEW_POSITION_DEFAULT = { -650 110 }
+	DECISION_DETAILS_VIEW_POSITION_COURT = { -20 110 }
+	KNIGHTS_VIEW_NUM_ACCOLADES = 5 # max number of accolade slots to show in the knights window
+	SITUATION_VIEW_NUM_HISTORY_ENTRIES = 50 # max number of entries in a situation history page. Must be at least 5, but keep it a reasonable amount for the UI.
+
+	DEFAULT_EVENT_HEADER_BACKGROUND_PATH = "gfx/interface/window_event/header_neutral.dds"
+}

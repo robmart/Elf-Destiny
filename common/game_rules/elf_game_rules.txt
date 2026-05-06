@@ -70,3 +70,19 @@ beauty_enhanced_traits_likelihood = {
 	}
 
 }
+
+the_wandering_pop_control = {
+    default = the_wandering_enabled
+
+	categories = {
+		tweaks 
+	}
+
+	the_wandering_enabled = {
+
+	}
+
+	the_wandering_disabled = {
+
+	}
+}

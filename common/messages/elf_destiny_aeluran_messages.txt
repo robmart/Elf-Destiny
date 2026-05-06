@@ -37,3 +37,11 @@ character_has_ascended = {
 	desc = event_message_text
 	style = neutral
 }
+
+character_wanders = {
+	soundeffect = @msg_neutral_soundeffect
+	icon = "travel_mixed"
+	title = event_message_title
+	desc = event_message_effect
+	style = neutral
+}

@@ -29,3 +29,6 @@ gui\window_ruler_designer.gui
 
 # Shader Files!!
 gfx\FX
+
+# Defines
+common\defines\graphic\OVERRIDE_defines.txt

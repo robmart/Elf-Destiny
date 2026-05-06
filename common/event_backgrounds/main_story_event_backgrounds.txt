@@ -68,3 +68,18 @@ restored_portal_background = {
 		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
 	}
 }
+
+the_wandering_background = {
+	background = {
+		trigger = {
+
+		}
+
+		reference = "gfx/interface/illustrations/event_themes/the_wandering_1.dds"
+
+		# looks like used for portrait lighting and adds a small background?
+		environment = "environment_village_festival"
+
+		ambience = "event:/DLC/FP1/SFX/Events/event_temple"
+	}
+}

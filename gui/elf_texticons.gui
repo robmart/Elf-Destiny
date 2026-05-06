@@ -1091,3 +1091,24 @@ texticon = {
         fontsize = 16
     }
 }
+
+
+texticon = {
+	icon = blue_left
+	iconsize = {
+		texture = "gfx/interface/icons/symbols/blue_left.dds"
+		size = { 20 20 }
+		offset = { 0 2 }
+		fontsize = 16
+	}
+}
+
+texticon = {
+	icon = blue_right
+	iconsize = {
+		texture = "gfx/interface/icons/symbols/blue_right.dds"
+		size = { 20 20 }
+		offset = { 0 2 }
+		fontsize = 16
+	}
+}
